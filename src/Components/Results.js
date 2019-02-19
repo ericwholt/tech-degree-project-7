@@ -8,7 +8,7 @@ const Results = (props) => {
     const results = props.data;
 
     let jpgs;
-    let title;
+    let title = props.title;
     if (results.length > 0) {
         jpgs = results.map(jpg => <Jpg url={`https://farm${ jpg.farm }.staticflickr.com/${ jpg.server }/${ jpg.id }_${ jpg.secret }.jpg`} key={jpg.id} />);
     } else {

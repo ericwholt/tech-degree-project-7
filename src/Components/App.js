@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   BrowserRouter,
   Route,
-  // Switch
+  Switch
+  // Redirect
 } from 'react-router-dom';
 import apiKey from '../config';
 
@@ -18,19 +19,57 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      jpgs: []
+      searchJpgs: [],
+      catsJpgs: [],
+      goatsJpgs: [],
+      dogsJpgs: []
     };
   }
 
   componentDidMount() {
-    this.preformSearch();
+    this.getGoatsJpgs();
+    this.getCatsJpgs();
+    this.getDogsJpgs();
   }
 
-  preformSearch = (query = 'goats') => {
+  getDogsJpgs = () => {
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${ apiKey }&tags=dogs&per_page=24&page=1&format=json&nojsoncallback=1`)
+      .then(response => response.json())
+      .then(responseData => {
+        this.setState({ dogsJpgs: responseData.photos.photo });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      });
+  }
+
+  getGoatsJpgs = () => {
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${ apiKey }&tags=goats&per_page=24&page=1&format=json&nojsoncallback=1`)
+      .then(response => response.json())
+      .then(responseData => {
+        this.setState({ goatsJpgs: responseData.photos.photo });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      });
+  }
+
+  getCatsJpgs = () => {
+    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${ apiKey }&tags=cats&per_page=24&page=1&format=json&nojsoncallback=1`)
+      .then(response => response.json())
+      .then(responseData => {
+        this.setState({ catsJpgs: responseData.photos.photo });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+      });
+  }
+
+  preformSearch = (query) => {
     fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${ apiKey }&tags=${ query }&per_page=24&page=1&format=json&nojsoncallback=1`)
       .then(response => response.json())
       .then(responseData => {
-        this.setState({ jpgs: responseData.photos.photo });
+        this.setState({ searchJpgs: responseData.photos.photo });
       })
       .catch(error => {
         console.log('Error fetching and parsing data', error);
@@ -44,7 +83,13 @@ export default class App extends Component {
         <div className="container">
           <SearchForm onSearch={this.preformSearch} />
           <MainNav />
-          <Route path="/" render={props => <Results data={this.state.jpgs} />} />
+          <Switch>
+            <Route exact path="/" render={() => <Results data={this.state.searchJpgs} />} />
+            <Route path="/goats" render={props => <Results data={this.state.goatsJpgs} title={'Goats'} />} />
+            <Route path="/cats" render={props => <Results data={this.state.catsJpgs} title={'Cats'} />} />
+            <Route path="/dogs" render={props => <Results data={this.state.dogsJpgs} title={'Dogs'} />} />
+            <Route path="/search" render={props => <Results data={this.state.searchJpgs} title={'Search Results'} />} />
+          </Switch>
 
         </div>
       </BrowserRouter>
