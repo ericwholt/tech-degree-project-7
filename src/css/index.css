@@ -90,6 +90,7 @@ input {
 }
 
 .photo-container .not-found {
+  list-style-type: none; /* Remove Bullet from No Results found*/
   width: 100%;
 }
 

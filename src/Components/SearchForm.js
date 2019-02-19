@@ -8,14 +8,17 @@ class SearchForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
         this.setState({ toSearch: true });
-        console.log(this.state.title);
         this.props.onSearch(this.query.value);
         e.currentTarget.reset();
+        // this.setState({ toSearch: false });
+    }
+    handleSearch = (searching) => {
+        this.setState({ toSearch: searching });
     }
 
     render() {
-        if (this.state.toSearch === true) {
-            this.setState({ toSearch: false });
+        if (this.state.toSearch) {
+            this.handleSearch(false);
             return (
                 <React.Fragment>
                     <form className="search-form" onSubmit={this.handleSubmit} >
