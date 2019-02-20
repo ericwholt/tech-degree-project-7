@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class SearchForm extends Component {
     state = {
@@ -37,7 +37,7 @@ class SearchForm extends Component {
                 </form>
                 {
                     this.state.toSearch &&
-                    <Redirect push={true} to={`/search/${ this.state.searchTerm }`} />
+                    <Redirect to={`/search/${ this.state.searchTerm }`} />
                 }
             </React.Fragment>
         );
