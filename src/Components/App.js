@@ -11,6 +11,7 @@ import apiKey from '../config';
 import SearchForm from './SearchForm';
 import MainNav from './Nav';
 import Results from './Results';
+import NotFound from './NotFound';
 
 
 
@@ -97,6 +98,7 @@ export default class App extends Component {
             <Route path="/cats" render={props => <Results data={this.state.catsJpgs} loading={this.state.loading} title={'Cats'} />} />
             <Route path="/dogs" render={props => <Results data={this.state.dogsJpgs} loading={this.state.loading} title={'Dogs'} />} />
             <Route path="/goats" render={props => <Results data={this.state.goatsJpgs} loading={this.state.loading} title={'Goats'} />} />
+            <Route component={NotFound} />
           </Switch>
 
         </div>
