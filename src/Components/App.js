@@ -67,7 +67,6 @@ export default class App extends Component {
   componentWillMount() {
     const searchTerm = window.location.pathname.match(/^\/search\/(\w+)/);
     if (searchTerm) {
-      console.log(searchTerm[1]);
       this.setState({ searchTerm: searchTerm[1] });
     }
   }

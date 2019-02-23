@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Required Items
+### Needed by you
+In the root of the src directory you will need a config.js. The config.js should be setup as follows
+
+```
+
+const apiKey = 'Your apiKey';
+
+export default apiKey;
+
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
