@@ -8,6 +8,11 @@ class SearchForm extends Component {
             toSearch: false
         }
     }
+    /**
+     * Handles form submit for search. We set the toSearch local state to true and a searchTerm to state.
+     * searchTerm is used in redirect once fetch of data has finished. Redirect allows loading of rendering of
+     * searched term.
+     */
     handleSubmit = e => {
         e.preventDefault();
         this.setState({ toSearch: true, searchTerm: this.query.value });

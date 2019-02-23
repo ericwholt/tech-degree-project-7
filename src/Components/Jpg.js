@@ -10,6 +10,7 @@ class Jpg extends Component {
         };
     }
 
+    // Once image is loaded set state to laoded
     handleImageLoaded(e) {
         this.setState({ imageStatus: "loaded" });
     }
@@ -20,6 +21,7 @@ class Jpg extends Component {
                     src={this.state.url} alt=""
                     onLoad={this.handleImageLoaded.bind(this)}
                 />
+                {/* Add loading to indvidual images until fully loaded. */}
                 {!(this.state.imageStatus === "loaded") && <h3>{this.state.imageStatus}</h3>}
             </li>
         )

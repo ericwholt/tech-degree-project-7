@@ -101,8 +101,7 @@ export default class App extends Component {
           <MainNav onSearch={this.preformSearch} searchTerm={this.state.searchTerm} />
           <Switch>
             <Route exact path="/search" component={NotFound} />
-            <Route path="/search" render={props => <Results data={this.state.searchJpgs} title={'Search Results'} searchTerm={this.state.searchTerm} />} />
-            {/* <Route exact path="/" render={() => <Results data={this.state.searchJpgs} loading={this.state.loading} />} /> */}
+            <Route exact path="/search/:term" render={props => <Results data={this.state.searchJpgs} title={'Search Results'} searchTerm={this.state.searchTerm} />} />
             <Route path="/cats" render={props => <Results data={this.state.catsJpgs} title={'Cats'} />} />
             <Route path="/dogs" render={props => <Results data={this.state.dogsJpgs} title={'Dogs'} />} />
             <Route path="/goats" render={props => <Results data={this.state.goatsJpgs} title={'Goats'} />} />
