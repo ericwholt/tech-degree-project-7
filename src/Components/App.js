@@ -73,7 +73,7 @@ export default class App extends Component {
   }
 
   /**
-   * This Method takes two params. A query string and a option callback function. 
+   * This Method takes two params. A query string and an optional callback function. 
    * The callback is used to optionally give data to other arrays besides searchJpgs in state.
    * This is mainly used in intial load of page.
    */
