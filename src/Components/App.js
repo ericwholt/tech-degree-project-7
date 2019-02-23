@@ -106,7 +106,7 @@ export default class App extends Component {
         <div className="container">
           <MainNav onSearch={this.preformSearch} searchTerm={this.state.searchTerm} />
           <Switch>
-
+            <Route exact path="/search" component={NotFound} />
             <Route path="/search" render={props => <Results data={this.state.searchJpgs} loading={this.state.loading} title={'Search Results'} searchTerm={this.state.searchTerm} />} />
             {/* <Route exact path="/" render={() => <Results data={this.state.searchJpgs} loading={this.state.loading} />} /> */}
             <Route path="/cats" render={props => <Results data={this.state.catsJpgs} loading={this.state.loading} title={'Cats'} />} />
@@ -115,7 +115,6 @@ export default class App extends Component {
             <Redirect exact path="/" to="/goats" />
             <Route component={NotFound} />
           </Switch>
-
         </div>
       </BrowserRouter >
     );

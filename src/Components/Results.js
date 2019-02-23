@@ -9,6 +9,7 @@ const Results = (props) => {
     const results = props.data;
     let jpgs;
     let title = props.title;
+    // let props = props.length;
 
 
     if (results.length > 0) {
@@ -34,7 +35,7 @@ const Results = (props) => {
     } else {
         return (
             < div className="photo-container" >
-                <NoJpgs />
+                <NoJpgs searchTerm={props.searchTerm} />
             </div>
         )
     }
