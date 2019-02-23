@@ -5,7 +5,7 @@ import SearchForm from './SearchForm';
 
 const Nav = (props) => (
     < nav className="main-nav" >
-        <SearchForm onSearch={props.onSearch} title={'Search Results'} />
+        <SearchForm onSearch={props.onSearch} title={'Search Results'} searchTerm={props.searchTerm} />
         <ul>
             <li><NavLink to='/goats' >Goats</NavLink></li>
             <li><NavLink to='/cats' >Cats</NavLink></li>

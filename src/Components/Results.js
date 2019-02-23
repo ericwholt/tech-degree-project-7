@@ -15,26 +15,30 @@ const Results = (props) => {
         jpgs = results.map(jpg => <Jpg url={`https://farm${ jpg.farm }.staticflickr.com/${ jpg.server }/${ jpg.id }_${ jpg.secret }.jpg`} key={jpg.id} />);
     }
 
-    return (
-        < div className="photo-container" >
-
-            {loading &&
+    if (loading) {
+        return (
+            < div className="photo-container" >
                 <Loading />
-            }
-            {!loading
-                && (results.length > 0)
-                && <h2>{title}</h2>
-                &&
+            </div>
+        )
+    } else if (results.length) {
+        return (
+            < div className="photo-container" >
+                <h2>{title}</h2>
+
                 <ul>
                     {jpgs}
                 </ul>
-            }
-            {!loading
-                && (results.length === 0)
-                && <NoJpgs />
-            }
-        </div >
-    );
+            </div >
+        )
+    } else {
+        return (
+            < div className="photo-container" >
+                <NoJpgs />
+            </div>
+        )
+    }
+
 }
 
 export default Results;

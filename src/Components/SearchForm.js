@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
 class SearchForm extends Component {
-    state = {
-        toSearch: false,
-        searchTerm: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            toSearch: false
+        }
     }
     handleSubmit = e => {
         e.preventDefault();
