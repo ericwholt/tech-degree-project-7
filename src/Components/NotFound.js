@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NotFound({ location }) {
+function NotFound() {
     return (
         <div>
             <h3 style={h3Style}>Oops</h3>
