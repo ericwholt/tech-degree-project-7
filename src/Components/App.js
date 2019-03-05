@@ -90,9 +90,9 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/search" render={props => <Search preformSearch={this.preformSearch} search={'search'} />} />
               <Route exact path="/search/:term" render={props => <Search preformSearch={this.preformSearch} />} />
-              <Route path="/goats" render={props => <Goats preformSearch={this.preformSearch} />} />
-              <Route path="/cats" render={props => <Cats preformSearch={this.preformSearch} />} />
-              <Route path="/dogs" render={props => <Dogs preformSearch={this.preformSearch} />} />
+              <Route exact path="/goats" render={props => <Goats preformSearch={this.preformSearch} />} />
+              <Route exact path="/cats" render={props => <Cats preformSearch={this.preformSearch} />} />
+              <Route exact path="/dogs" render={props => <Dogs preformSearch={this.preformSearch} />} />
               <Redirect exact path="/" to="/goats" />
               <Route component={NotFound} />
             </Switch>
